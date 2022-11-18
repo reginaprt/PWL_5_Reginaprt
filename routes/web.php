@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,24 +18,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/test', function () {
-//     return "<h1>Halo bang</h1>";
-// });
+Auth::routes();
 
-// Route::get('/test2', function () {
-//     return "<h1>Ga</h1>";
-// });
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Route::get('/test2', function () {
-//     return view();
-// });
+Auth::routes();
 
-// Route::redirect('/hengking', 'test2');
+Route::get('admin/home', [App\Http\Controllers\AdminController::class, 'index'])
+->name('admin.home')
+->middleware('is_admin');
 
-// Route::get('/griting', function () {
-//     return view('greeting');
-// });
+// Route::get('profile', function(){
 
-Route::get('/user/{id}/{nama}', function ($id,$nama) {
-    return "ID : ".$id."<br>Nama : ".$nama;
-});
+// })->middleware('auth');
+
+// Route::get('/test', function(){
+//     return "Hello";
+// })->middleware('auth');
