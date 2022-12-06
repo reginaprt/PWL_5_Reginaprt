@@ -291,40 +291,54 @@ return [
 
     'menu' => [
         // Navbar items:
-        [
-            'type'         => 'navbar-search',
-            'text'         => 'search',
-            'topnav_right' => true,
-        ],
-        [
-            'type'         => 'fullscreen-widget',
-            'topnav_right' => true,
-        ],
+        // [
+        //     'type'         => 'navbar-search',
+        //     'text'         => 'search',
+        //     'topnav_right' => true,
+        // ],
+        // [
+        //     'type'         => 'fullscreen-widget',
+        //     'topnav_right' => true,
+        // ],
 
         // Sidebar items:
+
+        // [
+        //     'type' => 'sidebar-menu-search',
+        //     'text' => 'search',
+        // ],
+        // [
+        //     'text' => 'blog',
+        //     'url'  => 'admin/blog',
+        //     'can'  => 'manage-blog',
+        // ],
+        // [
+        //     'text'        => 'pages',
+        //     'url'         => 'admin/pages',
+        //     'icon'        => 'far fa-fw fa-file',
+        //     'label'       => 4,
+        //     'label_color' => 'success',
+        // ],
+
+        // [
+        //     'text' => 'blog',
+        //     'url'  => 'admin/blog',
+        //     'can'  => 'manage-blog',
+        // ],
+
+        'MAIN NAVIGATION',
         [
-            'type' => 'sidebar-menu-search',
-            'text' => 'search',
+            'text' => 'Buku',
+            'url'  => 'admin/books',
+            'icon' => 'fas fa-fw fa-book',
+            'can' => 'isAdmin',
         ],
         [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
+            'text' => 'Blog',
+            'url' => 'admin/blog',
+            'can' => 'isUser',
         ],
-        [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
-        ],
-        [
-            'text'        => 'halaman',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
-        ],
+
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
@@ -428,7 +442,7 @@ return [
 
     'plugins' => [
         'Datatables' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',

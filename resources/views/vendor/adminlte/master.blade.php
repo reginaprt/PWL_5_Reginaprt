@@ -150,7 +150,7 @@
         }
         @endif
 
-        @if ($error->any())
+        @if ($errors->any())
         @foreach ($errors->all() as $error)
         Swal.fire({
             type: 'error',
@@ -161,6 +161,19 @@
         @endforeach
 
         @endif
+
+        @if ($errors->any())
+        Swal.fire({
+            icon: 'error',
+            title: "oopppsssss",
+            text: "Terjadi sesuatu kesalahan",
+        })
+        @endif
+
+        $('#table-data').DataTable();
+
+        let beseurl = "<?=url('/')?>";
+        let fullURL = "<?=url()->full()?>";
     </script>
 
 </body>
