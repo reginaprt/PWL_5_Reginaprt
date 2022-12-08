@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,33 +18,45 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('admin/home', [App\Http\Controllers\AdminController::class, 'index'])
-->name('admin.home')
-->middleware('is_admin');
-
-// Route::get('profile', function(){
-
-// })->middleware('auth');
-
-// Route::get('/test', function(){
-//     return "Hello";
-// })->middleware('auth');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])
+->name('home');
 
 Auth::routes();
 
-Route::get('/home', function() {
+Route::get('/home', function () {
     return view('home');
 })->name('home')->middleware('auth');
 
-Route::patch('admin/books/update', [App\Http\Controllers\AdminController::class, 'update_book'])
+Route::get('admin/home', [\App\Http\Controllers\AdminController::class, 'index'])
+->name('admin.home')
+->middleware('is_admin');
+
+Route::get('home', [\App\Http\Controllers\HomeController::class, 'index'])
+->name('home')
+->middleware('auth');
+
+Route::get('admin/books', [\App\Http\Controllers\AdminController::class, 'books'])
+->name('admin.books')
+->middleware('is_admin');
+
+Route::post('admin/books', [\App\Http\Controllers\AdminController::class, 'submit_book'])
+->name('admin.book.submit')
+->middleware('is_admin');
+
+Route::patch('admin/books/update', [\App\Http\Controllers\AdminController::class, 'update_book'])
 ->name('admin.book.update')
 ->middleware('is_admin');
 
-Route::get('admin/ajaxadmin/dataBuku/{id}', [App\Http\Controllers\AdminConteroller::class, 'getDataBuku']);
+Route::post('admin/books/update/{id}', [\App\Http\Controllers\AdminController::class, 'delete_book'])
+->name('admin.book.delete')
+->middleware('is_admin');
 
+Route::get('admin/ajaxadmin/dataBuku/{id}', [\App\Http\Controllers\AdminController::class, 'getDataBuku']);
+
+Route::post('admin/books/delete/{id}', [App\Http\Controllers\AdminController::class,'delete_book'])
+->name('admin.book.delete')
+->middleware('is_admin');
+
+Route::get('admin/print_books', [App\Http\Controllers\AdminController::class, 'print_books'])
+->name('admin.print.books')
+->middleware('is_admin');

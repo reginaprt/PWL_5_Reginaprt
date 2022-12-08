@@ -86,6 +86,7 @@
         <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
         <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
         <script src="{{ asset('vendor/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
         {{-- Configured Scripts --}}
         @include('adminlte::plugins', ['type' => 'js'])
@@ -109,7 +110,7 @@
 
     <script>
         const Toast = Swal.mixin({
-            toast: true;
+            toast: true,
             position: 'top-end',
             showConfirmButton: false,
             timer: 3000,
@@ -119,7 +120,8 @@
         var type = "{{Session::get('alert-type')}}";
 
         switch(type){
-            case 'info':Toast.fire({
+            case 'info': 
+            Toast.fire({
                 type: 'info',
                 title: "{{Session::get('message')}}"
             })
@@ -130,17 +132,20 @@
                 title: "{{Session::get('message')}}"
             })
             break;
-            case 'warning':Toast.fire({
+            case 'warning':
+            Toast.fire({
                 type: 'warning',
                 title: "{{Session::get('message')}}"
             })
             break;
-            case 'error':Toast.fire({
+            case 'error':
+            Toast.fire({
                 type: 'error',
                 title: "{{Session::get('message')}}"
             })
             break;
-            case 'dialog_error':Swal.fire({
+            case 'dialog_error':
+            Swal.fire({
                 type: 'error',
                 title: 'Ooopps',
                 text: "{{Session::get('message')}}",
@@ -154,7 +159,7 @@
         @foreach ($errors->all() as $error)
         Swal.fire({
             type: 'error',
-            title: 'Ooopps',
+            title: "Ooopps",
             text: "{{ $error }}",
         })
 
