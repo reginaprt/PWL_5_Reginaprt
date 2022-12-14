@@ -10,6 +10,11 @@ use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 
 class BooksExport Implements FromArray, WithHeadings, ShouldAutoSize
 {
+    public function collection()
+    {
+        return Book::all();
+    }
+    
     public function array():array
     {
         return Book::getDataBooks();

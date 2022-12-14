@@ -68,3 +68,9 @@ Route::get('admin/books/export', [App\Http\Controllers\AdminController::class, '
 Route::post('admin/books/import', [App\Http\Controllers\AdminController::class, 'import'])
 ->name('admin.book.import')
 ->middleware('is_admin');
+
+Auth::routes();
+
+Route::get('/home', function () {
+    return view('home');
+})->name('home')->middleware('auth');
