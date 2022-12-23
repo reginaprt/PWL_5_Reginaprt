@@ -5,14 +5,14 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Book;
-use Illuminate\Support\Facades\Storage;;
+use Illuminate\Support\Facades\Storage;
 
 class BookController extends Controller
 {
     public function books()
     {
         try{
-            $books = Bool::all();
+            $books = Book::all();
 
             return response()->json([
                 'message' => 'success',
@@ -89,7 +89,7 @@ class BookController extends Controller
         Storage::delete('public/cover_buku' . $book->cover);
         $book->delete();
         return response()->json([
-            'message' => 'Buku berhadil dihapus',
+            'message' => 'Buku berhasil dihapus',
         ], 200);
     }
 }
