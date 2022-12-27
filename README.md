@@ -1,7 +1,7 @@
 
 ## Instalasi
 
-npm install
+npm install.
 composer install
 
 composer self-update
