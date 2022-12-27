@@ -3,7 +3,7 @@
 
 npm install
 composer install
- 
+
 composer self-update
 composer clear-cache
 rm -rf vendor
